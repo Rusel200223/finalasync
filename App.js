@@ -26,21 +26,13 @@ const StudentApp = () => {
         username,
         password,
       };
-
-      
       const existingStudents = await AsyncStorage.getItem('students');
       const parsedStudents = existingStudents ? JSON.parse(existingStudents) : [];
-
-    
       const updatedStudents = [...parsedStudents, newStudent];
 
-     
       await AsyncStorage.setItem('students', JSON.stringify(updatedStudents));
-
-     
       setStudents(updatedStudents);
-
-
+      
       setFirstName('');
       setLastName('');
       setCourse('');
@@ -54,7 +46,6 @@ const StudentApp = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-
         const existingStudents = await AsyncStorage.getItem('students');
         const parsedStudents = existingStudents ? JSON.parse(existingStudents) : [];
         setStudents(parsedStudents);
@@ -71,10 +62,8 @@ const StudentApp = () => {
     setModalVisible(!isModalVisible);
   };
 
- 
   return (
     <View  style={styles.container}>
-      {/* Input fields for student information */}
       <View style={{marginBottom:100}}>
         <Text style={{fontWeight:'bold',fontSize:30}}>STUDENT REGISTRATION</Text>
       <TextInput style = {styles.input1}
@@ -104,11 +93,8 @@ const StudentApp = () => {
         onChangeText={setPassword}
       />
 
-      {/* Button to add a new student */}
       <Button title="Add Student" onPress={addStudent} />
-    
-
-      {/* Display the list of students in a table */}
+      
     <DataTable style={styles.tble}>
      <DataTable.Header style={styles.tblehead}>
         <DataTable.Title>Firstname</DataTable.Title> 
