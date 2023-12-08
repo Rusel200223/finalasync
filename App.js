@@ -1,12 +1,12 @@
-// Import necessary components and modules
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList,StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DataTable } from 'react-native-paper'; 
 import Modal from 'react-native-modal';
-// Functional component for the main app
+
 const StudentApp = () => {
-  // State variables for student information
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [course, setCourse] = useState('');
@@ -15,10 +15,10 @@ const StudentApp = () => {
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
-  // Function to handle adding a new student
+ 
   const addStudent = async () => {
     try {
-      // Create a new student object
+   
       const newStudent = {
         firstName,
         lastName,
@@ -27,20 +27,20 @@ const StudentApp = () => {
         password,
       };
 
-      // Retrieve existing students from AsyncStorage
+      
       const existingStudents = await AsyncStorage.getItem('students');
       const parsedStudents = existingStudents ? JSON.parse(existingStudents) : [];
 
-      // Update the list of students with the new student
+    
       const updatedStudents = [...parsedStudents, newStudent];
 
-      // Save the updated list of students to AsyncStorage
+     
       await AsyncStorage.setItem('students', JSON.stringify(updatedStudents));
 
-      // Update the state with the new list of students
+     
       setStudents(updatedStudents);
 
-      // Clear input fields
+
       setFirstName('');
       setLastName('');
       setCourse('');
@@ -51,7 +51,6 @@ const StudentApp = () => {
     }
   };
 
-  // Function to retrieve students from AsyncStorage on component mount
   useEffect(() => {
     const fetchStudents = async () => {
       try {
@@ -72,7 +71,7 @@ const StudentApp = () => {
     setModalVisible(!isModalVisible);
   };
 
-  // Render the UI
+ 
   return (
     <View  style={styles.container}>
       {/* Input fields for student information */}
