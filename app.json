@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "finalasync",
+    "slug": "finalasync",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
